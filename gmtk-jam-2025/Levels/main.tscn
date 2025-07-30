@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1oiyxfbgt5x3"]
+
+[ext_resource type="PackedScene" uid="uid://be0ug3u34ep81" path="res://Levels/hallway.tscn" id="1_gnif3"]
+[ext_resource type="PackedScene" uid="uid://ctrvarq8f30d3" path="res://Entities/player.tscn" id="2_lwy2l"]
+[ext_resource type="PackedScene" uid="uid://cna0hl71wuf32" path="res://Entities/spawner.tscn" id="3_lwy2l"]
+[ext_resource type="PackedScene" uid="uid://b0l7xddfefjlj" path="res://Entities/door.tscn" id="4_nj2yk"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Hallway" parent="." instance=ExtResource("1_gnif3")]
+
+[node name="Player" parent="." instance=ExtResource("2_lwy2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+jump_height = 1.0
+jump_time_to_peak = 0.3
+jump_time_to_descent = 0.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.224144, 0.5, -0.836516, 0.12941, 0.866025, 0.482963, 0.965926, 0, -0.258819, -7, 6, 0)
+
+[node name="Spawner 1" parent="." instance=ExtResource("3_lwy2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+
+[node name="Spawner 2" parent="." instance=ExtResource("3_lwy2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
+
+[node name="Door" parent="." instance=ExtResource("4_nj2yk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0)

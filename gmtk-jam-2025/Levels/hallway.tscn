@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://be0ug3u34ep81"]
+
+[ext_resource type="Script" uid="uid://b710vlvjdxchy" path="res://Levels/hallway.gd" id="1_6pmcm"]
+[ext_resource type="Material" uid="uid://dquhra2qo6egh" path="res://Assets/Materials/dark_debug.tres" id="2_6pmcm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hjqk6"]
+size = Vector3(50, 0.5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7f08"]
+size = Vector3(49, 4, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6pmcm"]
+size = Vector3(50, 5, 0.5)
+
+[node name="Hallway" type="Node3D"]
+script = ExtResource("1_6pmcm")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor"]
+size = Vector3(50, 0.5, 5)
+material = ExtResource("2_6pmcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_hjqk6")
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, 0)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ceiling"]
+size = Vector3(50, 0.5, 5)
+material = ExtResource("2_6pmcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_hjqk6")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_r7f08")
+
+[node name="Wall 1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 2.75)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Wall 1"]
+size = Vector3(50, 5, 0.5)
+material = ExtResource("2_6pmcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall 1"]
+shape = SubResource("BoxShape3D_6pmcm")
+
+[node name="Wall 2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.75)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Wall 2"]
+size = Vector3(50, 5, 0.5)
+material = ExtResource("2_6pmcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall 2"]
+shape = SubResource("BoxShape3D_6pmcm")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
