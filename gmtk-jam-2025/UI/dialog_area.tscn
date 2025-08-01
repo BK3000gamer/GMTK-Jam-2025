@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://de13b85lea2x6"]
+
+[ext_resource type="Script" uid="uid://b4fgfg5p1oiu" path="res://UI/dialog_area.gd" id="1_hnapb"]
+
+[node name="DialogArea" type="Area3D"]
+script = ExtResource("1_hnapb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

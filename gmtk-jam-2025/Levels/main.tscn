@@ -1,22 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1oiyxfbgt5x3"]
+[gd_scene load_steps=20 format=3 uid="uid://b1oiyxfbgt5x3"]
 
 [ext_resource type="PackedScene" uid="uid://be0ug3u34ep81" path="res://Levels/hallway.tscn" id="1_gnif3"]
 [ext_resource type="PackedScene" uid="uid://ctrvarq8f30d3" path="res://Entities/player.tscn" id="2_lwy2l"]
 [ext_resource type="PackedScene" uid="uid://cna0hl71wuf32" path="res://Entities/spawner.tscn" id="3_lwy2l"]
-[ext_resource type="PackedScene" uid="uid://b0l7xddfefjlj" path="res://Entities/door.tscn" id="4_nj2yk"]
+[ext_resource type="PackedScene" uid="uid://dgvd76otyst05" path="res://Levels/Rooms/room_801.tscn" id="4_wgfyn"]
+[ext_resource type="PackedScene" uid="uid://dao1uawg1da6g" path="res://Levels/Rooms/room_803.tscn" id="5_5uk0a"]
+[ext_resource type="PackedScene" uid="uid://clybl1yxnqljc" path="res://Levels/Rooms/room_805.tscn" id="6_ouevp"]
+[ext_resource type="PackedScene" uid="uid://ch8qbvn6m0is3" path="res://Levels/Rooms/room_807.tscn" id="7_ja5tu"]
+[ext_resource type="PackedScene" uid="uid://bubgmy0kcm0ia" path="res://Levels/Rooms/room_809.tscn" id="8_7bh50"]
+[ext_resource type="PackedScene" uid="uid://cusk0vtccabls" path="res://Levels/Rooms/room_802.tscn" id="9_aj3uf"]
+[ext_resource type="PackedScene" uid="uid://x0l5vfmccoaj" path="res://Levels/Rooms/room_804.tscn" id="10_1vwtg"]
+[ext_resource type="PackedScene" uid="uid://bl8dic7axn37x" path="res://Levels/Rooms/room_806.tscn" id="11_g5ved"]
+[ext_resource type="PackedScene" uid="uid://di5wocfji5204" path="res://Levels/Rooms/room_808.tscn" id="12_mq4wx"]
+[ext_resource type="PackedScene" uid="uid://but8w0kijd06j" path="res://Levels/Rooms/room_810.tscn" id="13_mjabq"]
+[ext_resource type="PackedScene" uid="uid://vmg7cfkw6r24" path="res://Levels/Rooms/room_701.tscn" id="14_5uk0a"]
+[ext_resource type="PackedScene" uid="uid://clglwataayeqi" path="res://Levels/Rooms/room_903.tscn" id="14_fn0hn"]
+[ext_resource type="PackedScene" uid="uid://cfbsy3bngt4g2" path="res://Levels/Rooms/room_505.tscn" id="15_kxlp0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lwy2l"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_nj2yk"]
+sky_material = SubResource("ProceduralSkyMaterial_lwy2l")
+
+[sub_resource type="Environment" id="Environment_7pswh"]
+background_mode = 2
+sky = SubResource("Sky_nj2yk")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.8008, 0.85756, 0.88, 1)
 
 [node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7pswh")
 
 [node name="Hallway" parent="." instance=ExtResource("1_gnif3")]
 
 [node name="Player" parent="." instance=ExtResource("2_lwy2l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
 jump_height = 1.0
 jump_time_to_peak = 0.3
 jump_time_to_descent = 0.2
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.224144, 0.5, -0.836516, 0.12941, 0.866025, 0.482963, 0.965926, 0, -0.258819, -7, 6, 0)
+swim_up_speed = 5.0
 
 [node name="Spawner 1" parent="." instance=ExtResource("3_lwy2l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
@@ -24,5 +53,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 [node name="Spawner 2" parent="." instance=ExtResource("3_lwy2l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
 
-[node name="Door" parent="." instance=ExtResource("4_nj2yk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0)
+[node name="Room 801" parent="." node_paths=PackedStringArray("room_903") instance=ExtResource("4_wgfyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -59.5)
+room_903 = NodePath("../Room 903")
+
+[node name="Room 803" parent="." node_paths=PackedStringArray("room_805", "room_808") instance=ExtResource("5_5uk0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -59.5)
+room_805 = NodePath("../Room 805")
+room_808 = NodePath("../Room 808")
+
+[node name="Room 805" parent="." node_paths=PackedStringArray("room_803") instance=ExtResource("6_ouevp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.5)
+room_803 = NodePath("../Room 803")
+
+[node name="Room 807" parent="." instance=ExtResource("7_ja5tu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -59.5)
+
+[node name="Room 809" parent="." instance=ExtResource("8_7bh50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -59.5)
+
+[node name="Room 802" parent="." node_paths=PackedStringArray("room_810") instance=ExtResource("9_aj3uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 59.5)
+room_810 = NodePath("../Room 810")
+
+[node name="Room 804" parent="." instance=ExtResource("10_1vwtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 59.5)
+
+[node name="Room 806" parent="." node_paths=PackedStringArray("room_505") instance=ExtResource("11_g5ved")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 59.5)
+room_505 = NodePath("../Room 505")
+
+[node name="Room 808" parent="." node_paths=PackedStringArray("room_803") instance=ExtResource("12_mq4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 59.5)
+room_803 = NodePath("../Room 803")
+
+[node name="Room 810" parent="." node_paths=PackedStringArray("room_701") instance=ExtResource("13_mjabq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 59.5)
+room_701 = NodePath("../Room 701")
+
+[node name="Room 701" parent="." node_paths=PackedStringArray("room_804", "room_807") instance=ExtResource("14_5uk0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 71.5)
+room_804 = NodePath("../Room 804")
+room_807 = NodePath("../Room 807")
+
+[node name="Room 903" parent="." node_paths=PackedStringArray("room_505", "room_801") instance=ExtResource("14_fn0hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -74.5)
+room_505 = NodePath("../Room 505")
+room_801 = NodePath("../Room 801")
+
+[node name="Room 505" parent="." node_paths=PackedStringArray("room_806", "room_903") instance=ExtResource("15_kxlp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -74.5)
+room_806 = NodePath("../Room 806")
+room_903 = NodePath("../Room 903")

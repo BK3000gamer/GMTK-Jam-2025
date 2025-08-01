@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfbsy3bngt4g2"]
+
+[ext_resource type="PackedScene" uid="uid://ctmkwnupu153h" path="res://Levels/room.tscn" id="1_5o2a8"]
+[ext_resource type="PackedScene" uid="uid://dloh2dkv4bou3" path="res://Assets/Models/kenney_furniture-kit/wall.glb" id="2_2keg6"]
+[ext_resource type="Script" uid="uid://iovykcuvdoxo" path="res://Levels/Rooms/room_505.gd" id="2_ke7ss"]
+[ext_resource type="PackedScene" uid="uid://b0l7xddfefjlj" path="res://Entities/Door/door.tscn" id="3_fgrq2"]
+[ext_resource type="PackedScene" uid="uid://1jglwuiam5t7" path="res://Assets/Models/Blender/Door 6.blend" id="5_nwj3u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xuktn"]
+size = Vector3(10, 5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwj3u"]
+size = Vector3(4.5, 5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uarxl"]
+size = Vector3(1, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgrq2"]
+size = Vector3(4.5, 5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ke7ss"]
+size = Vector3(1, 3, 0.1)
+
+[node name="Room 505" instance=ExtResource("1_5o2a8")]
+script = ExtResource("2_ke7ss")
+
+[node name="Wall 1" type="StaticBody3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.95)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall 1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_xuktn")
+
+[node name="wall" parent="Wall 1" index="1" instance=ExtResource("2_2keg6")]
+transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 2, -5, 0, 0.05)
+
+[node name="Wall 2" type="StaticBody3D" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.95, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall 2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_xuktn")
+
+[node name="wall" parent="Wall 2" index="1" instance=ExtResource("2_2keg6")]
+transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 2, -5, 0, 0.05)
+
+[node name="Wall 3" type="StaticBody3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.95)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Wall 3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2.5, 0)
+shape = SubResource("BoxShape3D_nwj3u")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Wall 3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_uarxl")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Wall 3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 2.5, 0)
+shape = SubResource("BoxShape3D_nwj3u")
+
+[node name="wall5" parent="Wall 3" index="3" instance=ExtResource("2_2keg6")]
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 2, 0.5, 0, 0.0504244)
+
+[node name="wall6" parent="Wall 3" index="4" instance=ExtResource("2_2keg6")]
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 2, -5, 0, 0.0504244)
+
+[node name="wall11" parent="Wall 3" index="5" instance=ExtResource("2_2keg6")]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 2, -0.5, 2, 0.0504244)
+
+[node name="Wall 4" type="StaticBody3D" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.95, 0, 0)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Wall 4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2.5, 0)
+shape = SubResource("BoxShape3D_fgrq2")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Wall 4" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_ke7ss")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Wall 4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 2.5, 0)
+shape = SubResource("BoxShape3D_fgrq2")
+
+[node name="wall5" parent="Wall 4" index="3" instance=ExtResource("2_2keg6")]
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 2, 0.5, 0, 0.0504244)
+
+[node name="wall6" parent="Wall 4" index="4" instance=ExtResource("2_2keg6")]
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 2, -5, 0, 0.0504244)
+
+[node name="wall11" parent="Wall 4" index="5" instance=ExtResource("2_2keg6")]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 2, -0.5, 2, 0.0504244)
+
+[node name="Door" parent="." index="7" instance=ExtResource("3_fgrq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -5)
+
+[node name="MeshInstance3D" parent="Door/Open" index="2"]
+visible = false
+
+[node name="Door 62" parent="Door/Open" index="3" instance=ExtResource("5_nwj3u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Door"]

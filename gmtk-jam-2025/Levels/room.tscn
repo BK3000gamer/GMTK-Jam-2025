@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctmkwnupu153h"]
+
+[ext_resource type="PackedScene" uid="uid://dloh2dkv4bou3" path="res://Assets/Models/kenney_furniture-kit/wall.glb" id="3_dgo2q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sv2ks"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqbng"]
+size = Vector3(9, 4, 9)
+
+[node name="Room" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_sv2ks")
+
+[node name="wall2" parent="Floor" instance=ExtResource("3_dgo2q")]
+transform = Transform3D(10, 0, 0, 0, -3.38763e-07, 2, 0, -7.75, -8.74228e-08, -5, 0.25, 5)
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_sv2ks")
+
+[node name="wall2" parent="Ceiling" instance=ExtResource("3_dgo2q")]
+transform = Transform3D(10, 0, 0, 0, -3.38763e-07, 2, 0, -7.75, -8.74228e-08, -5, -0.15, 5)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_cqbng")

@@ -5,5 +5,5 @@ var hallway
 
 func _instantiate() -> void:
 	hallway = hallway_path.instantiate()
-	hallway.global_position = global_position
 	get_parent().add_child(hallway)
+	hallway.global_position = global_position

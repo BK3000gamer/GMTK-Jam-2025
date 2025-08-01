@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0l7xddfefjlj"]
+
+[ext_resource type="Script" uid="uid://cfxq8y11tu3np" path="res://Entities/Door/door.gd" id="1_8i3vg"]
+[ext_resource type="Script" uid="uid://b1wsc0phyrbx8" path="res://Entities/Door/open.gd" id="2_qhasd"]
+[ext_resource type="Script" uid="uid://d0o1glgksm58x" path="res://Entities/Door/lock.gd" id="3_mjeyv"]
+[ext_resource type="Script" uid="uid://dvff1vmqtr61n" path="res://Entities/Door/unlock.gd" id="5_uf5hg"]
+[ext_resource type="Script" uid="uid://co8tpqfbc6r5g" path="res://Entities/Door/frame.gd" id="6_o8ax8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i3vg"]
+size = Vector3(1, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eoj8k"]
+size = Vector3(4, 2, 3)
+
+[node name="Door" type="Node3D" groups=["doors"]]
+script = ExtResource("1_8i3vg")
+
+[node name="Open" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_qhasd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Open"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+shape = SubResource("BoxShape3D_8i3vg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Open"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Open/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+shape = SubResource("BoxShape3D_8i3vg")
+
+[node name="Lock" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -1)
+script = ExtResource("3_mjeyv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_eoj8k")
+
+[node name="Unlock" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 1)
+script = ExtResource("5_uf5hg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Unlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+shape = SubResource("BoxShape3D_eoj8k")
+
+[node name="Frame" type="Area3D" parent="."]
+script = ExtResource("6_o8ax8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+shape = SubResource("BoxShape3D_8i3vg")
+
+[connection signal="body_entered" from="Lock" to="Lock" method="_on_body_entered"]
+[connection signal="body_exited" from="Lock" to="Lock" method="_on_body_exited"]
+[connection signal="body_entered" from="Unlock" to="Unlock" method="_on_body_entered"]
+[connection signal="body_exited" from="Unlock" to="Unlock" method="_on_body_exited"]
+[connection signal="body_entered" from="Frame" to="Frame" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctrvarq8f30d3"]
+[gd_scene load_steps=6 format=3 uid="uid://ctrvarq8f30d3"]
 
 [ext_resource type="Script" uid="uid://7s6jwn0ve2sx" path="res://Entities/player.gd" id="1_tcnsb"]
 
@@ -9,6 +9,15 @@ height = 1.8
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tcnsb"]
 radius = 0.3
 height = 1.8
+
+[sub_resource type="SystemFont" id="SystemFont_tcnsb"]
+font_names = PackedStringArray("Montserrat")
+font_weight = 500
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_gb1tc"]
+font = SubResource("SystemFont_tcnsb")
+font_size = 30
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_tcnsb")
@@ -24,7 +33,25 @@ mesh = SubResource("CapsuleMesh_tcnsb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -15)
+target_position = Vector3(0, 0, -2)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="InteractPromp" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="InteractPromp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = 52.0
+offset_right = 271.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_gb1tc")
+horizontal_alignment = 1
+vertical_alignment = 1

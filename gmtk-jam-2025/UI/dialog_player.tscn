@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjjjni67r2gab"]
+
+[ext_resource type="Script" uid="uid://b453svm6orulj" path="res://UI/dialog_player.gd" id="1_h2akf"]
+
+[sub_resource type="SystemFont" id="SystemFont_iol1t"]
+font_names = PackedStringArray("Montserrat")
+font_weight = 500
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2akf"]
+font = SubResource("SystemFont_iol1t")
+font_size = 30
+
+[node name="DialogPlayer" type="CanvasLayer"]
+script = ExtResource("1_h2akf")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -864.0
+offset_top = -250.0
+offset_right = 864.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(864, 125)
+label_settings = SubResource("LabelSettings_h2akf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
